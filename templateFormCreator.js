@@ -37,3 +37,33 @@ function selectDropdown() {
             break;
     }
 }
+
+function downloadPdf() {
+    var sTable = document.getElementById('contentTable').innerHTML;
+
+var style = "<style>";
+style = style + "table {border-collapse: collapse;width: 100%;}td {border: 1px solid #000000;text-align: left;padding: 8px;}";
+style = style + "</style>";
+
+var win = window.open('', '', 'height=700,width=700');
+
+win.document.write('<html><head>');
+win.document.write('<title>'+ 'Add a Driver Form: ' + client.name + '</title>'); 
+win.document.write(style);      
+win.document.write('</head>');
+win.document.write('<body>');
+win.document.write(sTable);         
+win.document.write('</body></html>');
+
+win.document.close(); 	
+
+win.print();    
+}
+function convertDate(date) {
+    var string = toString(date);
+    var year = date.slice(0, 4)
+    var month = date.slice(5, 7)
+    var day = date.slice(8,10)
+    var newDate = month + '/' + day + '/' + year;
+    return newDate
+}
